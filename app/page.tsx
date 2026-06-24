@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Button, Card, Col, Rate, Row, Tag, Typography } from "antd";
 import {
   CalendarOutlined,
@@ -95,6 +96,9 @@ export default function Home() {
             <a className="hover:text-[#2f855a]" href="#reviews">
               Reviews
             </a>
+            <Link className="hover:text-[#2f855a]" href="/about">
+              About Us
+            </Link>
           </div>
           <Button type="primary" size="large" icon={<CalendarOutlined />}>
             Book Appointment
