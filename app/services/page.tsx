@@ -6,7 +6,6 @@ import {
   ArrowLeftOutlined,
   CalendarOutlined,
   CheckCircleFilled,
-  HeartFilled,
   MedicineBoxOutlined,
   SafetyCertificateOutlined,
   ScissorOutlined,
@@ -203,17 +202,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-300">
-        <div className="mx-auto max-w-6xl px-4 py-10 text-center">
-          <div className="flex items-center justify-center gap-2 font-display text-lg font-extrabold text-white mb-3">
-            <HeartFilled className="text-[#ff7a66]" /> Happy Paws
-          </div>
-          <Text className="!text-slate-400">
-            © 2026 Happy Paws Veterinary Clinic. All rights reserved.
-          </Text>
-        </div>
-      </footer>
     </main>
   );
 }

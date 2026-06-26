@@ -62,69 +62,12 @@ const testimonials = [
 export default function Home() {
   return (
     <main className="flex-1">
-      {/* Top emergency strip */}
-      <div className="bg-[#276749] text-white text-sm">
-        <div className="mx-auto max-w-6xl px-4 py-2 flex items-center justify-between gap-3">
-          <span className="flex items-center gap-2">
-            <HeartFilled className="text-[#ff7a66]" />
-            Open 7 days a week · Walk-ins welcome
-          </span>
-          <a
-            href="tel:+97140000000"
-            className="flex items-center gap-2 font-semibold hover:opacity-90"
-          >
-            <PhoneOutlined /> 24/7 Emergency: +971 4 000 0000
-          </a>
-        </div>
-      </div>
-
-      {/* Navbar */}
-      <header className="sticky top-0 z-20 bg-white/90 backdrop-blur border-b border-slate-100">
-        <nav className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-2 font-display text-xl font-extrabold text-[#276749]">
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-[#2f855a] text-white">
-              <HeartFilled />
-            </span>
-            Happy Paws
-          </div>
-          <div className="hidden md:flex items-center gap-7 text-slate-600 font-medium">
-            <Link className="hover:text-[#2f855a]" href="/services">
-              Services
-            </Link>
-            <a className="hover:text-[#2f855a]" href="#why">
-              Why Us
-            </a>
-            <a className="hover:text-[#2f855a]" href="#reviews">
-              Reviews
-            </a>
-            <Link className="hover:text-[#2f855a]" href="/doctors">
-              Doctors
-            </Link>
-            <Link className="hover:text-[#2f855a]" href="/appointment">
-              Appointment
-            </Link>
-            <Link className="hover:text-[#2f855a]" href="/pet-care-tips">
-              Pet Care Tips
-            </Link>
-            <Link className="hover:text-[#2f855a]" href="/about">
-              About Us
-            </Link>
-            <Link className="hover:text-[#2f855a]" href="/contact">
-              Contact
-            </Link>
-          </div>
-          <Button type="primary" size="large" icon={<CalendarOutlined />}>
-            Book Appointment
-          </Button>
-        </nav>
-      </header>
-
       {/* Hero */}
       <section className="bg-gradient-to-b from-[#f0f7f2] to-white">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
           <div>
             <Tag color="green" className="mb-4 rounded-full px-3 py-1">
-              Trusted by 5,000+ pet families
+              Trusted by 2,500+ pet families
             </Tag>
             <Title className="!font-display !mb-4 !text-4xl md:!text-5xl !leading-tight">
               Compassionate care for every paw
@@ -134,12 +77,16 @@ export default function Home() {
               visits to emergencies, we&apos;re here for your best friend.
             </Paragraph>
             <div className="flex flex-wrap gap-3 mt-6">
-              <Button type="primary" size="large" icon={<CalendarOutlined />}>
-                Book an Appointment
-              </Button>
-              <Button size="large" icon={<PhoneOutlined />}>
-                Call the Clinic
-              </Button>
+              <Link href="/appointment">
+                <Button type="primary" size="large" icon={<CalendarOutlined />}>
+                  Book an Appointment
+                </Button>
+              </Link>
+              <a href="tel:+97140000000">
+                <Button size="large" icon={<PhoneOutlined />}>
+                  Call the Clinic
+                </Button>
+              </a>
             </div>
             <div className="flex items-center gap-6 mt-8 text-sm text-slate-500">
               <span className="flex items-center gap-2">
@@ -187,7 +134,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 py-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
             ["15+", "Years of care"],
-            ["5,000+", "Happy pets"],
+            ["2,500+", "Happy pets"],
             ["12", "Expert vets"],
             ["4.9★", "Google rating"],
           ].map(([stat, label]) => (
@@ -317,46 +264,17 @@ export default function Home() {
             Book an appointment in under two minutes. Your best friend will thank
             you.
           </Paragraph>
-          <Button
-            size="large"
-            icon={<CalendarOutlined />}
-            className="!bg-white !text-[#276749] !border-0 !font-semibold mt-4"
-          >
-            Book Appointment Now
-          </Button>
+          <Link href="/appointment">
+            <Button
+              size="large"
+              icon={<CalendarOutlined />}
+              className="!bg-white !text-[#276749] !border-0 !font-semibold mt-4"
+            >
+              Book Appointment Now
+            </Button>
+          </Link>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-300">
-        <div className="mx-auto max-w-6xl px-4 py-12 grid md:grid-cols-3 gap-8">
-          <div>
-            <div className="flex items-center gap-2 font-display text-lg font-extrabold text-white mb-3">
-              <HeartFilled className="text-[#ff7a66]" /> Happy Paws
-            </div>
-            <Text className="!text-slate-400">
-              Compassionate veterinary care for every paw, every day.
-            </Text>
-          </div>
-          <div>
-            <Text strong className="!text-white block mb-3">
-              Hours
-            </Text>
-            <Text className="!text-slate-400 block">Mon–Fri: 8am – 9pm</Text>
-            <Text className="!text-slate-400 block">Sat–Sun: 9am – 6pm</Text>
-          </div>
-          <div>
-            <Text strong className="!text-white block mb-3">
-              Contact
-            </Text>
-            <Text className="!text-slate-400 block">+971 4 000 0000</Text>
-            <Text className="!text-slate-400 block">hello@happypaws.vet</Text>
-          </div>
-        </div>
-        <div className="border-t border-slate-800 py-5 text-center text-sm text-slate-500">
-          © 2026 Happy Paws Veterinary Clinic. All rights reserved.
-        </div>
-      </footer>
     </main>
   );
 }
