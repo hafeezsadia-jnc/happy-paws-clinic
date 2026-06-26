@@ -1,151 +1,151 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Button, Card, Col, Row, Tag, Typography } from "antd";
 import {
-  ArrowLeftOutlined,
+  ArrowRightOutlined,
   ClockCircleOutlined,
-  HeartFilled,
+  UserOutlined,
 } from "@ant-design/icons";
+import { blogPosts, categoryColors } from "@/lib/blog";
 
 const { Title, Paragraph, Text } = Typography;
 
-const posts = [
-  {
-    category: "Nutrition",
-    title: "Feeding Your Dog: A Simple Guide to Balanced Meals",
-    excerpt:
-      "Portion sizes, treats and the nutrients every dog needs to thrive at each life stage.",
-    readTime: "5 min read",
-  },
-  {
-    category: "Dental",
-    title: "Why Dental Care Matters More Than You Think",
-    excerpt:
-      "Bad breath can signal bigger problems. Here's how to keep your pet's smile healthy.",
-    readTime: "4 min read",
-  },
-  {
-    category: "Preventive",
-    title: "Vaccination Schedules Explained for New Pet Owners",
-    excerpt:
-      "Which vaccines your puppy or kitten needs, and when — a stress-free timeline.",
-    readTime: "6 min read",
-  },
-  {
-    category: "Emergency",
-    title: "Pet First Aid: What to Do Before You Reach the Vet",
-    excerpt:
-      "Simple steps that can make a real difference in an emergency situation.",
-    readTime: "7 min read",
-  },
-  {
-    category: "Grooming",
-    title: "Grooming at Home: Tips for a Calm, Happy Pet",
-    excerpt:
-      "Brushing, bathing and nail care made easy with these gentle techniques.",
-    readTime: "5 min read",
-  },
-  {
-    category: "Nutrition",
-    title: "Healthy Treats Your Cat Will Actually Love",
-    excerpt:
-      "Reward your feline friend without the extra calories — vet-approved ideas inside.",
-    readTime: "3 min read",
-  },
-];
-
-const categoryColors: Record<string, string> = {
-  Nutrition: "green",
-  Dental: "blue",
-  Preventive: "cyan",
-  Emergency: "red",
-  Grooming: "purple",
-};
-
 export default function PetCareTipsPage() {
+  const [featured, ...rest] = blogPosts;
+
   return (
-    <main className="flex-1">
+    <main className="flex-1 overflow-hidden">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-[#f0f7f2] to-white">
-        <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-[#2f855a] font-medium hover:opacity-80"
-          >
-            <ArrowLeftOutlined /> Back to Home
-          </Link>
-          <Title className="!font-display !mt-6 !mb-4 !text-4xl md:!text-5xl">
-            Pet care tips & advice
+      <section className="relative">
+        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#f3f0ff] via-[#fef6f1] to-[#eafaf2]" />
+        <div className="absolute -top-20 -left-20 -z-10 h-64 w-64 rounded-full bg-[#c4b5fd]/40 blur-3xl" />
+        <div className="absolute top-10 right-0 -z-10 h-72 w-72 rounded-full bg-[#a7f3d0]/40 blur-3xl" />
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20 text-center">
+          <span className="text-sm font-semibold uppercase tracking-wider text-[#2f855a]">
+            From our vets
+          </span>
+          <Title className="!font-display !mt-2 !mb-4 !text-4xl md:!text-5xl">
+            Pet care tips &amp; advice
           </Title>
-          <Paragraph className="!text-lg !text-slate-600 max-w-2xl">
-            Expert guidance from our veterinary team on nutrition, dental health,
-            preventive care and more — to help your pet live their best life.
+          <Paragraph className="mx-auto !max-w-2xl !text-lg !text-slate-600">
+            Expert guidance on nutrition, dental health, preventive care and more
+            — to help your pet live their best life.
           </Paragraph>
         </div>
       </section>
 
-      {/* Blog grid */}
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <Row gutter={[24, 24]}>
-          {posts.map((p) => (
-            <Col xs={24} sm={12} lg={8} key={p.title}>
-              <Card
-                hoverable
-                className="h-full border border-slate-100"
-                cover={
-                  <div className="h-40 bg-gradient-to-br from-[#2f855a] to-[#276749] flex items-center justify-center">
-                    <HeartFilled className="text-4xl text-white/80" />
-                  </div>
-                }
-              >
-                <Tag
-                  color={categoryColors[p.category] ?? "green"}
-                  className="rounded-full mb-3"
-                >
-                  {p.category}
+      {/* Featured post */}
+      <section className="mx-auto max-w-6xl px-4 pb-4">
+        <Link href={`/pet-care-tips/${featured.slug}`}>
+          <Card
+            hoverable
+            className="overflow-hidden rounded-3xl border border-slate-100"
+            styles={{ body: { padding: 0 } }}
+          >
+            <div className="grid md:grid-cols-2">
+              <div className="relative aspect-[16/10] md:aspect-auto md:min-h-[320px]">
+                <Image
+                  src={featured.image}
+                  alt={featured.title}
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+                <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-[#2f855a] backdrop-blur">
+                  Featured
+                </span>
+              </div>
+              <div className="flex flex-col justify-center p-6 sm:p-10">
+                <Tag color={categoryColors[featured.category]} className="mb-3 w-fit rounded-full">
+                  {featured.category}
                 </Tag>
-                <Title level={4} className="!font-display !mb-2 !text-lg">
-                  {p.title}
+                <Title level={2} className="!font-display !mb-3 !text-2xl sm:!text-3xl">
+                  {featured.title}
                 </Title>
-                <Paragraph className="!text-slate-600 !text-sm">
-                  {p.excerpt}
-                </Paragraph>
-                <div className="flex items-center justify-between">
-                  <Text className="!text-slate-400 !text-xs">
-                    <ClockCircleOutlined /> {p.readTime}
-                  </Text>
-                  <Button type="link" className="!px-0">
-                    Read more
-                  </Button>
+                <Paragraph className="!text-slate-600">{featured.excerpt}</Paragraph>
+                <div className="mt-2 flex items-center gap-4 text-sm text-slate-400">
+                  <span><UserOutlined /> {featured.author}</span>
+                  <span><ClockCircleOutlined /> {featured.readTime}</span>
                 </div>
-              </Card>
+                <span className="mt-5 inline-flex items-center gap-2 font-semibold text-[#2f855a]">
+                  Read more <ArrowRightOutlined />
+                </span>
+              </div>
+            </div>
+          </Card>
+        </Link>
+      </section>
+
+      {/* Grid */}
+      <section className="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+        <Row gutter={[24, 24]}>
+          {rest.map((p) => (
+            <Col xs={24} sm={12} lg={8} key={p.slug}>
+              <Link href={`/pet-care-tips/${p.slug}`}>
+                <Card
+                  hoverable
+                  className="group h-full overflow-hidden rounded-3xl border border-slate-100"
+                  styles={{ body: { padding: 20 } }}
+                  cover={
+                    <div className="relative h-48 w-full overflow-hidden">
+                      <Image
+                        src={p.image}
+                        alt={p.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-[#2f855a] backdrop-blur">
+                        {p.category}
+                      </span>
+                    </div>
+                  }
+                >
+                  <Title level={5} className="!font-display !mb-2">
+                    {p.title}
+                  </Title>
+                  <Paragraph className="!text-slate-600 !text-sm" ellipsis={{ rows: 2 }}>
+                    {p.excerpt}
+                  </Paragraph>
+                  <div className="flex items-center justify-between">
+                    <Text className="!text-slate-400 !text-xs">
+                      <ClockCircleOutlined /> {p.readTime}
+                    </Text>
+                    <span className="inline-flex items-center gap-1 text-sm font-semibold text-[#2f855a]">
+                      Read more <ArrowRightOutlined />
+                    </span>
+                  </div>
+                </Card>
+              </Link>
             </Col>
           ))}
         </Row>
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-r from-[#2f855a] to-[#276749]">
-        <div className="mx-auto max-w-6xl px-4 py-16 text-center text-white">
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#2f855a] to-[#276749]">
+        <div className="absolute -left-10 -top-10 h-48 w-48 rounded-full bg-white/10" />
+        <div className="relative mx-auto max-w-6xl px-4 py-16 text-center text-white">
           <Title level={2} className="!text-white !font-display">
             Have a question about your pet&apos;s health?
           </Title>
-          <Paragraph className="!text-white/85 max-w-lg mx-auto">
+          <Paragraph className="mx-auto !max-w-lg !text-white/85">
             Our vets are here to help. Book a visit and get expert, personalised
             advice.
           </Paragraph>
           <Link href="/appointment">
             <Button
               size="large"
-              className="!bg-white !text-[#276749] !border-0 !font-semibold mt-4"
+              className="!mt-4 !border-0 !bg-white !font-semibold !text-[#276749]"
             >
               Book an Appointment
             </Button>
           </Link>
         </div>
       </section>
-
     </main>
   );
 }
