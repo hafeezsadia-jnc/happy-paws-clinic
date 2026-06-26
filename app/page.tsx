@@ -140,15 +140,32 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl shadow-xl ring-1 ring-slate-100">
-            <Image
-              src="/happy-paws-hero.png"
-              alt="A caring veterinarian with a happy golden retriever at Happy Paws Veterinary Clinic"
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
-            />
+          <div className="relative mt-4 md:mt-0 mb-8 md:mb-0">
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl shadow-xl ring-1 ring-slate-100">
+              <Image
+                src="/images/pet-clinic-hero.png"
+                alt="A caring veterinarian with a happy golden retriever at Happy Paws Veterinary Clinic"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+
+            {/* Floating trust card */}
+            <div className="absolute -bottom-5 left-4 sm:left-6 flex items-center gap-3 rounded-2xl bg-white/95 px-4 py-3 shadow-lg ring-1 ring-slate-100 backdrop-blur">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#ff7a66]/15 text-lg text-[#ff7a66]">
+                <HeartFilled />
+              </span>
+              <div>
+                <div className="font-display text-sm font-bold text-slate-800">
+                  24/7 Emergency Care
+                </div>
+                <div className="text-xs text-slate-500">
+                  Trusted by 2,500+ pet families
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
