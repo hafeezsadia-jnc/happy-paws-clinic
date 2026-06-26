@@ -88,9 +88,9 @@ export default function Home() {
             Happy Paws
           </div>
           <div className="hidden md:flex items-center gap-7 text-slate-600 font-medium">
-            <a className="hover:text-[#2f855a]" href="#services">
+            <Link className="hover:text-[#2f855a]" href="/services">
               Services
-            </a>
+            </Link>
             <a className="hover:text-[#2f855a]" href="#why">
               Why Us
             </a>
@@ -108,6 +108,9 @@ export default function Home() {
             </Link>
             <Link className="hover:text-[#2f855a]" href="/about">
               About Us
+            </Link>
+            <Link className="hover:text-[#2f855a]" href="/contact">
+              Contact
             </Link>
           </div>
           <Button type="primary" size="large" icon={<CalendarOutlined />}>
