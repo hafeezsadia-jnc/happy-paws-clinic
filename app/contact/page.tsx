@@ -18,23 +18,27 @@ const { TextArea } = Input;
 const info = [
   {
     icon: <EnvironmentOutlined />,
+    tint: "bg-[#e8f5ee] text-[#2f855a]",
     label: "Visit us",
     value: "Sheikh Zayed Road, Dubai, United Arab Emirates",
   },
   {
     icon: <PhoneOutlined />,
+    tint: "bg-[#e6f0fe] text-[#2563eb]",
     label: "Call us",
     value: "+971 4 000 0000",
     href: "tel:+97140000000",
   },
   {
     icon: <MailOutlined />,
+    tint: "bg-[#f1ecfe] text-[#7c3aed]",
     label: "Email us",
     value: "hello@happypaws.vet",
     href: "mailto:hello@happypaws.vet",
   },
   {
     icon: <ClockCircleOutlined />,
+    tint: "bg-[#fdeee9] text-[#ff7a66]",
     label: "Opening hours",
     value: "Mon–Fri: 8am – 9pm · Sat–Sun: 9am – 6pm",
   },
@@ -45,32 +49,35 @@ export default function ContactPage() {
   const [form] = Form.useForm();
 
   return (
-    <main className="flex-1">
+    <main className="flex-1 overflow-hidden">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-[#f0f7f2] to-white">
-        <div className="mx-auto max-w-6xl px-4 py-14 md:py-20">
+      <section className="relative">
+        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#f3f0ff] via-[#fef6f1] to-[#eafaf2]" />
+        <div className="absolute -top-20 -left-20 -z-10 h-64 w-64 rounded-full bg-[#c4b5fd]/40 blur-3xl" />
+        <div className="absolute top-10 right-0 -z-10 h-72 w-72 rounded-full bg-[#a7f3d0]/40 blur-3xl" />
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:py-20 text-center">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-[#2f855a] font-medium hover:opacity-80"
+            className="inline-flex items-center gap-2 text-sm font-medium text-[#2f855a] hover:opacity-80"
           >
             <ArrowLeftOutlined /> Back to Home
           </Link>
           <Title className="!font-display !mt-6 !mb-3 !text-4xl md:!text-5xl">
             Get in touch
           </Title>
-          <Paragraph className="!text-lg !text-slate-600 max-w-2xl">
+          <Paragraph className="mx-auto !max-w-2xl !text-lg !text-slate-600">
             Have a question or want to book a visit? We&apos;d love to hear from
-            you — reach out and our friendly team will get right back to you.
+            you — our friendly team will get right back to you.
           </Paragraph>
         </div>
       </section>
 
       {/* Contact form + info */}
-      <section className="mx-auto max-w-6xl px-4 py-12">
+      <section className="mx-auto max-w-6xl px-4 py-10">
         <Row gutter={[32, 32]}>
           {/* Form */}
           <Col xs={24} md={14}>
-            <Card className="border border-slate-100 shadow-sm h-full">
+            <Card className="h-full rounded-3xl border border-slate-100 shadow-sm">
               {submitted ? (
                 <Result
                   status="success"
@@ -145,9 +152,13 @@ export default function ContactPage() {
           <Col xs={24} md={10}>
             <div className="space-y-4">
               {info.map((item) => (
-                <Card key={item.label} className="border border-slate-100" styles={{ body: { padding: 18 } }}>
+                <Card
+                  key={item.label}
+                  className="rounded-2xl border border-slate-100"
+                  styles={{ body: { padding: 18 } }}
+                >
                   <div className="flex items-start gap-3">
-                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#f0f7f2] text-[#2f855a]">
+                    <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ${item.tint}`}>
                       {item.icon}
                     </span>
                     <div>
@@ -166,7 +177,6 @@ export default function ContactPage() {
                 </Card>
               ))}
 
-              {/* WhatsApp CTA */}
               <a
                 href="https://wa.me/97140000000"
                 target="_blank"
@@ -180,22 +190,22 @@ export default function ContactPage() {
         </Row>
 
         {/* Emergency callout */}
-        <div className="mt-8 flex flex-col items-center justify-between gap-3 rounded-2xl bg-[#fff1ee] px-6 py-5 text-center sm:flex-row sm:text-left">
+        <div className="mt-8 flex flex-col items-center justify-between gap-3 rounded-[2rem] bg-gradient-to-r from-[#ff7a66] to-[#e11d6b] px-6 py-6 text-center text-white sm:flex-row sm:text-left">
           <div className="flex items-center gap-3">
-            <span className="grid h-11 w-11 place-items-center rounded-full bg-[#ff7a66]/20 text-xl text-[#ff7a66]">
+            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-white/20 text-xl">
               <PhoneOutlined />
             </span>
             <div>
-              <Text strong className="!text-slate-800 block">
+              <Text strong className="!text-white block">
                 Pet emergency?
               </Text>
-              <Text className="!text-slate-600">
+              <Text className="!text-white/90">
                 Our team is available 24/7. Call us right away.
               </Text>
             </div>
           </div>
           <a href="tel:+97140000000">
-            <Button size="large" className="!bg-[#ff7a66] !text-white !border-0 !font-semibold">
+            <Button size="large" className="!border-0 !bg-white !font-semibold !text-[#e11d6b]">
               Call +971 4 000 0000
             </Button>
           </a>
@@ -204,7 +214,7 @@ export default function ContactPage() {
 
       {/* Map */}
       <section className="mx-auto max-w-6xl px-4 pb-16">
-        <div className="overflow-hidden rounded-3xl shadow-sm ring-1 ring-slate-100">
+        <div className="overflow-hidden rounded-[2rem] shadow-sm ring-1 ring-slate-100">
           <iframe
             title="Happy Paws Veterinary Clinic location"
             src="https://www.google.com/maps?q=Dubai&output=embed"
@@ -214,7 +224,6 @@ export default function ContactPage() {
           />
         </div>
       </section>
-
     </main>
   );
 }
