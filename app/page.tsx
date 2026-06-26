@@ -97,6 +97,15 @@ export default function Home() {
             <a className="hover:text-[#2f855a]" href="#reviews">
               Reviews
             </a>
+            <Link className="hover:text-[#2f855a]" href="/doctors">
+              Doctors
+            </Link>
+            <Link className="hover:text-[#2f855a]" href="/appointment">
+              Appointment
+            </Link>
+            <Link className="hover:text-[#2f855a]" href="/pet-care-tips">
+              Pet Care Tips
+            </Link>
             <Link className="hover:text-[#2f855a]" href="/about">
               About Us
             </Link>
