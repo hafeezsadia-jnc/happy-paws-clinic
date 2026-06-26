@@ -17,7 +17,6 @@ const links = [
   { href: "/doctors", label: "Doctors" },
   { href: "/appointment", label: "Appointment" },
   { href: "/pet-care-tips", label: "Pet Care Tips" },
-  { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
 ];
 
