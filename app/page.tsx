@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Button, Card, Col, Rate, Row, Tag, Typography } from "antd";
 import {
@@ -139,31 +140,16 @@ export default function Home() {
             </div>
           </div>
 
-          <Card className="shadow-xl border-0" styles={{ body: { padding: 28 } }}>
-            <Text className="!text-slate-500">Next available slot</Text>
-            <Title level={3} className="!mt-1 !mb-4 !font-display">
-              Today · 4:30 PM
-            </Title>
-            <div className="space-y-3">
-              {[
-                "Dr. Ayesha Khan — Internal Medicine",
-                "Dr. James Park — Surgery",
-              ].map((d) => (
-                <div
-                  key={d}
-                  className="flex items-center justify-between rounded-xl bg-[#f0f7f2] px-4 py-3"
-                >
-                  <span className="text-slate-700 font-medium">{d}</span>
-                  <Button type="link" className="!px-0">
-                    Select
-                  </Button>
-                </div>
-              ))}
-            </div>
-            <Button type="primary" block size="large" className="!mt-5">
-              Reserve now
-            </Button>
-          </Card>
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl shadow-xl ring-1 ring-slate-100">
+            <Image
+              src="/happy-paws-hero.png"
+              alt="A caring veterinarian with a happy golden retriever at Happy Paws Veterinary Clinic"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
         </div>
       </section>
 
